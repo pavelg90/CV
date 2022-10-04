@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1200px;
+            height: 800px;
+            background-color: #0F202E;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"borderWidth": 0, "color": "#F5F5F5", "group": "Me", "id": "Me", "label": "Me", "shape": "dot", "size": 100.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "MTA", "label": "MTA", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "Fiveblocks", "label": "Fiveblocks", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "DPO", "label": "DPO", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "CBS", "label": "CBS", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "Ministry of Justice", "label": "Ministry of Justice", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "BIScience", "label": "BIScience", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "invesintg.com", "label": "invesintg.com", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "utab.com", "label": "utab.com", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "ZIM", "label": "ZIM", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "GlobalLeads", "label": "GlobalLeads", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "caster.fm", "label": "caster.fm", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "Medassist", "label": "Medassist", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "StateUp", "label": "StateUp", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "Shamaym", "label": "Shamaym", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#6A5CC2", "group": "companies", "id": "Eco City", "label": "Eco City", "shape": "dot", "size": 65.0}, {"borderWidth": 0, "color": "#4E9B8F", "group": "role", "id": "Data analyst", "label": "Data analyst", "shape": "dot", "size": 50.0}, {"borderWidth": 0, "color": "#4E9B8F", "group": "role", "id": "BI Developer", "label": "BI Developer", "shape": "dot", "size": 50.0}, {"borderWidth": 0, "color": "#4E9B8F", "group": "role", "id": "Software engineer", "label": "Software engineer", "shape": "dot", "size": 50.0}, {"borderWidth": 0, "color": "#4E9B8F", "group": "role", "id": "SEO specialist", "label": "SEO specialist", "shape": "dot", "size": 50.0}, {"borderWidth": 0, "color": "#4E9B8F", "group": "role", "id": "Marketing", "label": "Marketing", "shape": "dot", "size": 50.0}, {"borderWidth": 0, "color": "#4E9B8F", "group": "role", "id": "Automation", "label": "Automation", "shape": "dot", "size": 50.0}, {"borderWidth": 0, "color": "#4E9B8F", "group": "role", "id": "Project lead", "label": "Project lead", "shape": "dot", "size": 50.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Python", "label": "Python", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "SQL", "label": "SQL", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Relational DB", "label": "Relational DB", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "JSON", "label": "JSON", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "No-SQL", "label": "No-SQL", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "HTML", "label": "HTML", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "CSS", "label": "CSS", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "JS", "label": "JS", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Excel", "label": "Excel", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Power BI", "label": "Power BI", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Tableau", "label": "Tableau", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Qlik", "label": "Qlik", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Grafana", "label": "Grafana", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Metabase", "label": "Metabase", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Redash", "label": "Redash", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Wordpress", "label": "Wordpress", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "PHP", "label": "PHP", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Graph network", "label": "Graph network", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Ahrefs", "label": "Ahrefs", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Google Analytics", "label": "Google Analytics", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Crawlers", "label": "Crawlers", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Java", "label": "Java", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Streamlit", "label": "Streamlit", "shape": "dot", "size": 35.0}, {"borderWidth": 0, "color": "#D97559", "group": "skills", "id": "Google ads", "label": "Google ads", "shape": "dot", "size": 35.0}]);
+        edges = new vis.DataSet([{"from": "Me", "to": "MTA", "weight": 1}, {"from": "Me", "to": "Fiveblocks", "weight": 1}, {"from": "Me", "to": "DPO", "weight": 1}, {"from": "Me", "to": "CBS", "weight": 1}, {"from": "Me", "to": "Ministry of Justice", "weight": 1}, {"from": "Me", "to": "BIScience", "weight": 1}, {"from": "Me", "to": "invesintg.com", "weight": 1}, {"from": "Me", "to": "utab.com", "weight": 1}, {"from": "Me", "to": "ZIM", "weight": 1}, {"from": "Me", "to": "GlobalLeads", "weight": 1}, {"from": "Me", "to": "caster.fm", "weight": 1}, {"from": "Me", "to": "Medassist", "weight": 1}, {"from": "Me", "to": "StateUp", "weight": 1}, {"from": "Me", "to": "Shamaym", "weight": 1}, {"from": "Me", "to": "Eco City", "weight": 1}, {"from": "Data analyst", "to": "Python", "weight": 1}, {"from": "Data analyst", "to": "SQL", "weight": 1}, {"from": "Data analyst", "to": "Relational DB", "weight": 1}, {"from": "Data analyst", "to": "Excel", "weight": 1}, {"from": "Data analyst", "to": "Power BI", "weight": 1}, {"from": "Data analyst", "to": "Tableau", "weight": 1}, {"from": "Data analyst", "to": "Qlik", "weight": 1}, {"from": "Data analyst", "to": "Grafana", "weight": 1}, {"from": "Data analyst", "to": "Google Analytics", "weight": 1}, {"from": "BI Developer", "to": "Python", "weight": 1}, {"from": "BI Developer", "to": "SQL", "weight": 1}, {"from": "BI Developer", "to": "Relational DB", "weight": 1}, {"from": "BI Developer", "to": "JSON", "weight": 1}, {"from": "BI Developer", "to": "No-SQL", "weight": 1}, {"from": "BI Developer", "to": "HTML", "weight": 1}, {"from": "BI Developer", "to": "CSS", "weight": 1}, {"from": "BI Developer", "to": "JS", "weight": 1}, {"from": "BI Developer", "to": "Excel", "weight": 1}, {"from": "BI Developer", "to": "Power BI", "weight": 1}, {"from": "BI Developer", "to": "Tableau", "weight": 1}, {"from": "BI Developer", "to": "Qlik", "weight": 1}, {"from": "BI Developer", "to": "Grafana", "weight": 1}, {"from": "BI Developer", "to": "Metabase", "weight": 1}, {"from": "BI Developer", "to": "Redash", "weight": 1}, {"from": "BI Developer", "to": "Graph network", "weight": 1}, {"from": "BI Developer", "to": "Java", "weight": 1}, {"from": "BI Developer", "to": "Streamlit", "weight": 1}, {"from": "Software engineer", "to": "Python", "weight": 1}, {"from": "Software engineer", "to": "JS", "weight": 1}, {"from": "Software engineer", "to": "PHP", "weight": 1}, {"from": "Software engineer", "to": "Java", "weight": 1}, {"from": "SEO specialist", "to": "Python", "weight": 1}, {"from": "SEO specialist", "to": "Wordpress", "weight": 1}, {"from": "SEO specialist", "to": "Ahrefs", "weight": 1}, {"from": "SEO specialist", "to": "Google Analytics", "weight": 1}, {"from": "SEO specialist", "to": "Crawlers", "weight": 1}, {"from": "Marketing", "to": "Google ads", "weight": 1}, {"from": "Marketing", "to": "Ahrefs", "weight": 1}, {"from": "Marketing", "to": "Google Analytics", "weight": 1}, {"from": "Automation", "to": "Python", "weight": 1}, {"from": "Automation", "to": "SQL", "weight": 1}, {"from": "Automation", "to": "Relational DB", "weight": 1}, {"from": "Automation", "to": "Crawlers", "weight": 1}, {"from": "MTA", "to": "Software engineer", "weight": 1}, {"from": "Fiveblocks", "to": "BI Developer", "weight": 1}, {"from": "DPO", "to": "BI Developer", "weight": 1}, {"from": "CBS", "to": "BI Developer", "weight": 1}, {"from": "Ministry of Justice", "to": "BI Developer", "weight": 1}, {"from": "BIScience", "to": "Data analyst", "weight": 1}, {"from": "invesintg.com", "to": "SEO specialist", "weight": 1}, {"from": "utab.com", "to": "Marketing", "weight": 1}, {"from": "ZIM", "to": "BI Developer", "weight": 1}, {"from": "GlobalLeads", "to": "BI Developer", "weight": 1}, {"from": "caster.fm", "to": "SEO specialist", "weight": 1}, {"from": "Medassist", "to": "Marketing", "weight": 1}, {"from": "Medassist", "to": "Project lead", "weight": 1}, {"from": "StateUp", "to": "Project lead", "weight": 1}, {"from": "Shamaym", "to": "Data analyst", "weight": 1}, {"from": "Eco City", "to": "Automation", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"physics": {"forceAtlas2Based": {"springLength": 150}, "minVelocity": 0.75, "solver": "forceAtlas2Based", "wind": {"x": 1.1}}, "nodes": {"font": {"color": "#FFFFFF", "size": 20}, "shadow": {"enabled": "true", "color": "rgba(255,255,255,0.2)", "x": 0, "y": 0, "size": 15}}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

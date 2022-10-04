@@ -1,0 +1,45 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+    <style>
+    @font-face {
+        font-family: 'My Font';
+        font-style: normal;
+        src: url(assets/fonts/myfont.tff) format('truetype');;
+    }
+    .sidebar-text{
+        font-family: 'Roboto', sans-serif;
+    }
+    .standard-text{
+        font-family: 'My Font';
+    }
+    label {
+        font-family: Gilroy;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+
+
+    .vis-network {
+     min-height: 100%;
+    }
+    }
+    #mynetwork {
+        border-color: black !important;
+        border: none !important;
+    }
+    /* Companies */
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-o37qyp.e1fqkh3o11 > div.css-1ope8sv.e1fqkh3o4 > div.css-hxt7ib.e1fqkh3o5 > div > div:nth-child(1) > div > div:nth-child(3) > div > div > div > div > div.st-cd.st-cj.st-d0.st-d1.st-d2.st-b4.st-c3.st-d3.st-ck.st-ca.st-cb.st-d4.st-bd.st-d5 > span {
+    background-color: #6A5CC2;
+    }
+    /* Roles */
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-o37qyp.e1fqkh3o11 > div.css-1ope8sv.e1fqkh3o4 > div.css-hxt7ib.e1fqkh3o5 > div > div:nth-child(1) > div > div:nth-child(4) > div > div > div > div > div.st-cd.st-cj.st-d0.st-d1.st-d2.st-b4.st-c3.st-d3.st-ck.st-ca.st-cb.st-d4.st-bd.st-d5 > span{
+    background-color: #4E9B8F;
+    }
+    /* Skills */
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-o37qyp.e1fqkh3o11 > div.css-1ope8sv.e1fqkh3o4 > div.css-hxt7ib.e1fqkh3o5 > div > div:nth-child(1) > div > div:nth-child(5) > div > div > div > div > div.st-cd.st-cj.st-d0.st-d1.st-d2.st-b4.st-c3.st-d3.st-ck.st-ca.st-cb.st-d4.st-bd.st-d5 > span{
+    background-color: #D97559;
+    }
+    </style>
