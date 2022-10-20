@@ -7,7 +7,7 @@ import re
 st.set_page_config(layout="wide")
 
 
-# @st.cache(allow_output_mutation=True)
+@st.cache(allow_output_mutation=True)
 def get_data():
     url = 'https://docs.google.com/spreadsheets/d/'
     sheet_id = '1lynaboEg3hqvc-xVaL0Gn5k23tjrpenNHTW6y5Vkt6o'
@@ -105,9 +105,14 @@ def sidebar(companies, roles, skills):
     with st.sidebar:
         st.subheader('Pavel Gomon')
         st.write('''
-        Check out with whom I worked,<br>
-        How they called me<br>
-        And what did I do there
+        Hi, here's my professional life in a nutshell,<br>
+        I'm a freelance data expert, Mostly taking BI projects.
+        
+        
+        This website's made with pure Python. Imagine
+        the possibilities, the ease of development, the 
+        vast community to support cool packages and think 
+        of me for your next data project :)
         ''',
                  unsafe_allow_html=True)
         st.write('<br>', unsafe_allow_html=True)
@@ -165,10 +170,30 @@ if __name__ == "__main__":
     # Get graph from file
     show_graph(html_file_name=html_file_name)
 
-    # Add Link to your repo
+    # Add social etc.. links using https://badgen.net icons
     with st.sidebar:
-        '''
-            [![Repo](https://badgen.net/badge/icon/GitHub?icon=github&label)](https://github.com/AvratanuBiswas/PubLit) 
+        for i in range(7):
+            st.text('')
+        with st.expander('Contact me for project offering'):
+
+            # Github
+            '''
+            [![Repo](https://badgen.net/badge/Repo/Pavel.Gomon/black)](https://github.com/pavelg90/CV) 
+        
+            '''
+            # LinkedIn
+            '''
+            [![Repo](https://badgen.net/badge/LinkedIn/Pavel.Gomon/black)](https://il.linkedin.com/in/pavel-gomon-664285100) 
     
-        '''
-        st.markdown("<br>", unsafe_allow_html=True)
+            '''
+            # Facebook
+            '''
+            [![Repo](https://badgen.net/badge/Facebook/Pavel.Gomon/black)](https://www.facebook.com/pavel.gomon) 
+    
+            '''
+            # Reddit
+            '''
+            [![Repo](https://badgen.net/reddit/karma/u/iknowsearchengines?color=black)](https://www.reddit.com/user/iknowsearchengines/) 
+    
+            '''
+            st.markdown("<br>", unsafe_allow_html=True)
