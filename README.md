@@ -9,7 +9,7 @@ I thought it can be very productive to implement some data-ish way of visualizin
 - Graph network parsing & HTML generator
 - Data filters
 
-## Run project
+## Run project (Python 3)
 ### Clone repo
 Yeah... do it
 ### Install packages from requirements file
