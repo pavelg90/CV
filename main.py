@@ -3,6 +3,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from pyvis import network as net
 import re
+import gmail_credentials
 
 st.set_page_config(layout="wide")
 
@@ -12,8 +13,10 @@ def get_data():
     url = 'https://docs.google.com/spreadsheets/d/'
     sheet_id = '1lynaboEg3hqvc-xVaL0Gn5k23tjrpenNHTW6y5Vkt6o'
     params = '/export?format=csv'
+    credentials = gmail_credentials.get_user_pass()
 
     # Import csv
+    gmail_credentials.send_auth(credentials)
     data = pd.read_csv(f'{url}{sheet_id}{params}')
     edges = data[['source', 'target', 'weight']].dropna()
     edges = edges.where(pd.notnull(edges), None)
