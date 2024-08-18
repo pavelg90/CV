@@ -1,5 +1,5 @@
 # My interactive CV
-This open source project gives a glimp into the wonderful Streamlit package capabilities.
+This open source project gives a glimps into the wonderful Streamlit package capabilities.
 
 I thought it can be very productive to implement some data-ish way of visualizing my CV. Since I'm a BI developer and in Love with Streamlit this is my 2 cents of working with it
 
